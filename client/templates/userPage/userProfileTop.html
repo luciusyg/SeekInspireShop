@@ -1,0 +1,41 @@
+<template name="userProfileTop">
+
+<div class="row profile-container">
+  <div class="col-md-1"></div>
+  <div class="col-md-3 pad-gap30">
+      <img class="img-circle center-block" id="image" src="http://res.cloudinary.com/lyg/{{getProfileImg _id}}" height="200px" max-width="200px"> 
+
+  </div>
+  
+  <div class="col-md-5" id="profile-col">
+    <h2>{{username}} {{c.url}}
+      <span class="btn-group ">
+        <button class="btn btn-success">Follow</button>
+      </span>
+    </h2>
+
+    <div class="greyLine"></div>
+    <div class="follow-container pull-left">  
+      <span class="bold-text">4519</span> followers     
+    </div>
+    <div class="follow-container pull-left">  
+      <span class="bold-text">4519</span> following
+    </div>
+    
+    <div class="clearfix"></div>
+
+    {{getUserDesc _id}}
+
+
+    
+ </div>
+  <div class="col-md-3"></div>
+
+</div>
+
+</template>
+
+<template name="hello">
+  
+  {{posts}}
+</template>

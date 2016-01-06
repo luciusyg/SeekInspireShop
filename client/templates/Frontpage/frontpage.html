@@ -1,0 +1,12 @@
+<template name="frontpage">
+<h2> Hello this is the frontpage </h2>
+<br>
+<h3> current users</h3>
+
+{{#each userList}}
+<ul>
+  <li><a href="{{username}}">{{username}}</a></li>
+</ul>
+{{/each}}
+
+</template>

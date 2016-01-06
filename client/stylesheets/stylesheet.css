@@ -1,0 +1,131 @@
+/*	border:1px solid green;*/
+
+
+.profile-container {
+	padding-left: 30px;
+	padding-right: 30px;
+	padding-bottom: 30px;
+}
+
+.body-container {
+	padding-left: 30px;
+	padding-right: 30px;
+}
+
+.follow-container {
+	padding-top: 10px;
+	padding-bottom: 20px;
+	padding-right: 10px;
+}
+
+.items-container {
+	padding-top: 30px;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-bottom: 30px;
+	/*border:1px solid green; */
+}
+
+.cropper-ProfileImg {
+	width: 400px;
+	height: 400px;
+}
+
+.item-box {
+	padding-bottom: 20px;
+	max-width: 400px; 
+	border-radius: 10px;
+	border:1px solid #ccc;
+	margin-bottom: 30px;
+}
+
+.item-textarea {
+	padding-top: 10px;
+	padding-right: 20px;
+	padding-left: 20px;
+}
+
+.item-maxwidth {
+	max-width: 100%;
+    height: auto;
+}
+
+.item-status {
+	padding-right: 20px;
+	padding-left: 20px;
+	padding-top: 10px;
+	padding-bottom: 20px;
+	vertical-align: middle;
+	background-color: #F7EBD2;
+	border-radius: 10px 10px 0 0;
+}
+
+.item-status-text {
+	padding-right: 50px;
+}
+
+.coupon-box {
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+#coupon-button {
+	border:1px;
+	border-style: dashed;
+	border-color: #007DFF;
+}
+
+.buy-box {
+	padding-top: 20px;
+	vertical-align: text-top;
+}
+
+.greyLine {
+     background: #ccc; 
+     width: 100%; 
+     height: 1px;
+}
+
+.vcenter {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.bold-text {
+   font-weight: bold;
+}
+
+.pad-gap30 {
+	padding-bottom: 20px;
+}
+
+.pad-right20 {
+	padding-right: 20px;
+}
+
+.pad-left20 {
+	padding-left: 20px;
+}
+
+/* Nav bars */
+.12dropdown-menu {
+  min-width:100%;
+}
+
+
+/* Text tweaks */
+#profile-col h2 {
+   margin-top: 0;
+}
+
+.item-titles h3 {
+
+}
+
+.coupon-title {
+	color:#007DFF;
+}
+
+
+

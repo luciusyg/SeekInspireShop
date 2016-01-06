@@ -1,0 +1,58 @@
+Template.editProfile.events({
+	"submit .edit-profile": function(event){
+		var file = $('#profileImage').get(0).files[0];
+		var idString = ProfileImages.findOne({owner: Meteor.user()._id});
+		if(file){
+					fsFile = new FS.File(file);
+					fsFile.owner = Meteor.userId();
+
+					$('#myModal').modal('show');
+
+					if(ProfileImages.find({owner: Meteor.user()._id}).count() >= 1) {
+						ProfileImages.remove({_id: idString._id});
+					}
+
+					ProfileImages.insert(fsFile, function(err, result){
+						var imageLoc = '/cfs/files/ProfileImages/'+result._id;
+						var profileId = UserData.findOne({username: Meteor.user().username})._id;
+
+						if(err){
+							throw new Meteor.Error(err);
+							} else {
+										if(UserData.findOne({userId: Meteor.userId(),image:{"$exists":'true'}})) {
+										UserData.update(profileId,{
+										$set: {image: imageLoc}
+										});
+									} 
+						}
+
+					if (fsFile.isUploaded()) {
+						//Router.go('/');
+						}
+				});
+		}
+		return false;
+	}
+});
+
+AutoForm.addHooks(['userDescUpdate'], {
+  onSuccess: function(operation, result, template) {
+   FlashMessages.sendSuccess('Success!');
+   //Router.go("/"+Meteor.user().username);
+  }
+});
+
+
+Template.editProfile.onRendered(function () {
+        $('.cropper-ProfileImg > img').cropper({
+            aspectRatio: 1 / 1,
+            autoCropArea: 0.65,
+            viewMode: 3,
+            strict: false,
+            guides: false,
+            highlight: false,
+            dragMode: 'move',
+            cropBoxMovable: true,
+            cropBoxResizable: false
+        });
+});
