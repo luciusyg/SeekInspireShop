@@ -30,7 +30,7 @@ Meteor.startup(function () {
 Template.registerHelper('getProfileImg', function(userId){
   var UserDataId = UserData.findOne({userId: userId });
   var imgUrl = UserDataId && UserDataId.image; 
-  return imgUrl;
+  return "http://res.cloudinary.com/lyg/"+imgUrl;
 });
 
 Template.registerHelper('getUserDesc', function(userId){
