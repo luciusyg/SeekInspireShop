@@ -6,11 +6,6 @@ Meteor.publish("UserData", function() {
     return UserData.find();
 });
 
-Meteor.publish("ProfileImages", function() {
-    return ProfileImages.find();
-});
-
-
 Accounts.validateNewUser(function (user){
 	UserData.insert({
 						userId: user._id,

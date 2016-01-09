@@ -1,6 +1,5 @@
 Meteor.subscribe("allUsers");
 Meteor.subscribe("UserData");
-Meteor.subscribe("ProfileImages");
 
 $.cloudinary.config({
   cloud_name: "lyg"

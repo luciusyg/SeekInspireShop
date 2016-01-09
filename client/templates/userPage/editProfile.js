@@ -1,5 +1,5 @@
 //Template.editProfile.onCreated(function(){
-  TempImageLocVar = new ReactiveVar();
+  ImageLocVar = new ReactiveVar();
 //});
 
 Template.editProfile.events({
@@ -9,14 +9,16 @@ Template.editProfile.events({
 	        e.preventDefault();
 	    var files = []
 		  var file = $('#profileImage')[0].files[0];
-	   	files.push(file)
+	   	//files.push(file)
 
-	    Cloudinary._upload_file(file,{tags:"profileImagesTemp",folder:"profileImagesTemp"}, function(err, res){
+	    Cloudinary._upload_file(file,{tags:"profileImages",folder:"profileImages"}, function(err, res){
            console.log("Upload Error: " + err);
             $('form :input').attr('value', '');
            //console.log("Upload Result: " + res);
-           TempImageLocVar.set(res.public_id);
+           ImageLocVar.set(res.public_id);
               var $image = $('#cropImg > img'), cropBoxData, canvasData;
+              var cancelCrop = false;
+
               $('#cropEditProfile').modal({backdrop:'static',keyboard: false});
               $('#cropEditProfile').modal('show');
 
@@ -37,19 +39,26 @@ Template.editProfile.events({
                           $image.cropper('setCanvasData', canvasData);
                       }
                   });
+                  $("#cancelCrop").click(function () {
+                      cancelCrop = true;
+                  });
               }).on('hidden.bs.modal', function () {
-                          cropBoxData = $image.cropper('getData');
-                          canvasData = $image.cropper('getCanvasData');
-                          var profileId = UserData.findOne({username: Meteor.user().username})._id;
-                          var croppedSpecs = "x_"+Math.round(cropBoxData.x)
-                                             +",y_"+Math.round(cropBoxData.y)
-                                             +",w_"+Math.round(cropBoxData.width)
-                                             +",h_"+Math.round(cropBoxData.height)
-                                             +",c_crop/"
-                          UserData.update(profileId,{
-                            $set: {image: croppedSpecs+TempImageLocVar.get()}
-                          });
-                          $image.cropper('destroy');
+                          if(cancelCrop === true) {
+                              $image.cropper('destroy');
+                          } else {
+                                    cropBoxData = $image.cropper('getData');
+                                    canvasData = $image.cropper('getCanvasData');
+                                    var profileId = UserData.findOne({username: Meteor.user().username})._id;
+                                    var croppedSpecs = "x_"+Math.round(cropBoxData.x)
+                                                       +",y_"+Math.round(cropBoxData.y)
+                                                       +",w_"+Math.round(cropBoxData.width)
+                                                       +",h_"+Math.round(cropBoxData.height)
+                                                       +",c_crop/"
+                                    UserData.update(profileId,{
+                                      $set: {image: croppedSpecs+ImageLocVar.get()}
+                                    });
+                                    $image.cropper('destroy');
+                                  }
                 });
               document.getElementById("edit-profile").reset();
 	    });
@@ -57,8 +66,8 @@ Template.editProfile.events({
 });
 
 Template.editProfile.helpers({
-    TempImageLoc: function() {
-    return TempImageLocVar.get();
+    ImageLoc: function() {
+    return ImageLocVar.get();
     },
     'showModal': function(){
       return Session.get('showModal');
@@ -67,7 +76,7 @@ Template.editProfile.helpers({
 
 Template.cropEditProfile.helpers({
     TempImageLoc: function() {
-    return TempImageLocVar.get();
+    return ImageLocVar.get();
     }
 });
 
