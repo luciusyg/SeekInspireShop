@@ -1,5 +1,7 @@
 /*	border:1px solid green;*/
-
+.modal-body {
+	height:300px;
+}
 
 .profile-container {
 	padding-left: 30px;

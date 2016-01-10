@@ -18,16 +18,14 @@ Template.editProfile.events({
            ImageLocVar.set(res.public_id);
               var $image = $('#cropImg > img'), cropBoxData, canvasData;
               var cancelCrop = false;
-
               $('#cropEditProfile').modal({backdrop:'static',keyboard: false});
               $('#cropEditProfile').modal('show');
-
               $('#cropEditProfile').on('shown.bs.modal', function () {
                 backdrop: 'static'
                   $image.cropper({
                       aspectRatio: 1/1,
                       autoCropArea: 0.5,
-                      viewMode: 3,
+                      viewMode: 1,
                       guides: false,
                       dragMode:'move',
                       zoomable: true,
@@ -39,12 +37,14 @@ Template.editProfile.events({
                           $image.cropper('setCanvasData', canvasData);
                       }
                   });
+                  console.log("x_"+Math.round(cropBoxData.x)+",y_"+Math.round(cropBoxData.y));
                   $("#cancelCrop").click(function () {
                       cancelCrop = true;
                   });
               }).on('hidden.bs.modal', function () {
                           if(cancelCrop === true) {
                               $image.cropper('destroy');
+                              $image.cropper('clear');
                           } else {
                                     cropBoxData = $image.cropper('getData');
                                     canvasData = $image.cropper('getCanvasData');

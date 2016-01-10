@@ -1,6 +1,6 @@
 <template name="editProfile">
 	{{> flashMessages}}
-	<h3>Edit Profile {{userId}}</h3>
+	<h3>Edit Profile {{username}}</h3>
 	<img class="img-circle" id="image" src="{{getProfileImg userId}}" height="200px" max-width="200px"> 
 	<form class="edit-profile" id="edit-profile" enctype="multipart/form-data">
 		Upload Profile Image: 
@@ -25,17 +25,15 @@
 
 </template>
 
-
 <template name ="cropEditProfile">
-	<div class="modal fade" id="cropEditProfile">
+	<div class="modal fade" id="cropEditProfile" height="200px">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				 <div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 					<h4 class="modal-title" id="myModalLabel">Crop your profile Image</h4>
 				</div>
 				<div class="modal-body" id="cropImg" >
-				          <img src="{{c.url TempImageLoc}}">
+				          <img src="{{c.url TempImageLoc}}" style="display: none;">
 				</div>
 				 <div class="modal-footer">
 				 	 <button type="button" id="cancelCrop" class="btn btn-default" data-dismiss="modal">Cancel</button>
