@@ -28,7 +28,7 @@ Meteor.startup(function () {
 
 Template.registerHelper('getProfileImg', function(userId){
   var UserDataId = UserData.findOne({userId: userId });
-  var imgUrl = UserDataId && UserDataId.image; 
+  var imgUrl = UserDataId && UserDataId.cropImage; 
   return "http://res.cloudinary.com/lyg/"+imgUrl;
 });
 

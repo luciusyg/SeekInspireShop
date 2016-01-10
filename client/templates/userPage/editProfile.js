@@ -45,6 +45,8 @@ Template.editProfile.events({
                               $image.cropper('destroy');
                               window.location.reload();
                           } else {
+                                    var imageCloudId = UserData.findOne({username: Meteor.user().username}).imageCloudId;
+                                    Cloudinary.delete(imageCloudId);
                                     cropBoxData = $image.cropper('getData');
                                     canvasData = $image.cropper('getCanvasData');
                                     var profileId = UserData.findOne({username: Meteor.user().username})._id;
@@ -54,13 +56,13 @@ Template.editProfile.events({
                                                        +",h_"+Math.round(cropBoxData.height)
                                                        +",c_crop/"
                                     UserData.update(profileId,{
-                                      $set: {image: croppedSpecs+ImageLocVar.get()}
+                                      $set: {cropImage: croppedSpecs+ImageLocVar.get(), imageCloudId: ImageLocVar.get()}
                                     });
                                     $image.cropper('destroy');
                                     window.location.reload();
                                   }
                 });
-              document.getElementById("edit-profile").reset();
+             // document.getElementById("edit-profile").reset();
 
       });
     }       
