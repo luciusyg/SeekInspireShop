@@ -10,8 +10,8 @@ Accounts.validateNewUser(function (user){
 	UserData.insert({
 						userId: user._id,
 						username: user.username,
-						cropImage: "/imgs/profile.jpg",
-						imageCloudId: "",
+						cropImage: "profileImages/defaultprofile",
+						imageCloudId: "pending",
 						userDesc: "hello you can place your desc here"
 						});
 	return true;

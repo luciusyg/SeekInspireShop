@@ -9,9 +9,9 @@ Template.editProfile.events({
           e.preventDefault();
       var files = []
       var file = $('#profileImage')[0].files[0];
-      //files.push(file)
+   
 
-      Cloudinary._upload_file(file,{tags:"profileImages",folder:"profileImages"}, function(err, res){
+      Cloudinary._upload_file(file1,{tags:"profileImages",folder:"profileImages"}, function(err, res){
            console.log("Upload Error: " + err);
             $('form :input').attr('value', '');
            //console.log("Upload Result: " + res);
