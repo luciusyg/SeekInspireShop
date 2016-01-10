@@ -7,11 +7,11 @@ Template.editProfile.events({
     'submit .edit-profile': function(e, t){
           // Prevent default actions
           e.preventDefault();
-      var files = []
+      var file = [];
       var file = $('#profileImage')[0].files[0];
-   
+     
 
-      Cloudinary._upload_file(file1,{tags:"profileImages",folder:"profileImages"}, function(err, res){
+      Cloudinary._upload_file(file,{tags:"profileImages",folder:"profileImages"}, function(err, res){
            console.log("Upload Error: " + err);
             $('form :input').attr('value', '');
            //console.log("Upload Result: " + res);
