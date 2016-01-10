@@ -5,13 +5,13 @@
 Template.editProfile.events({
     // Submit signup form event
     'submit .edit-profile': function(e, t){
-	        // Prevent default actions
-	        e.preventDefault();
-	    var files = []
-		  var file = $('#profileImage')[0].files[0];
-	   	//files.push(file)
+          // Prevent default actions
+          e.preventDefault();
+      var files = []
+      var file = $('#profileImage')[0].files[0];
+      //files.push(file)
 
-	    Cloudinary._upload_file(file,{tags:"profileImages",folder:"profileImages"}, function(err, res){
+      Cloudinary._upload_file(file,{tags:"profileImages",folder:"profileImages"}, function(err, res){
            console.log("Upload Error: " + err);
             $('form :input').attr('value', '');
            //console.log("Upload Result: " + res);
@@ -37,14 +37,13 @@ Template.editProfile.events({
                           $image.cropper('setCanvasData', canvasData);
                       }
                   });
-                  console.log("x_"+Math.round(cropBoxData.x)+",y_"+Math.round(cropBoxData.y));
                   $("#cancelCrop").click(function () {
                       cancelCrop = true;
                   });
               }).on('hidden.bs.modal', function () {
                           if(cancelCrop === true) {
                               $image.cropper('destroy');
-                              $image.cropper('clear');
+                              window.location.reload();
                           } else {
                                     cropBoxData = $image.cropper('getData');
                                     canvasData = $image.cropper('getCanvasData');
@@ -58,10 +57,12 @@ Template.editProfile.events({
                                       $set: {image: croppedSpecs+ImageLocVar.get()}
                                     });
                                     $image.cropper('destroy');
+                                    window.location.reload();
                                   }
                 });
               document.getElementById("edit-profile").reset();
-	    });
+
+      });
     }       
 });
 
