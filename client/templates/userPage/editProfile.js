@@ -1,6 +1,25 @@
-//Template.editProfile.onCreated(function(){
-  ImageLocVar = new ReactiveVar();
-//});
+ImageLocVar = new ReactiveVar();
+var area;
+var count = new ReactiveVar(0);
+
+Template.editProfile.onRendered(function(){
+  area = document.getElementById('userDescUpdate');
+});
+
+Template.editProfile.events({
+  'click #userDescUpdate': function(){
+      Countable.live(area, function (counter) {
+      count.set(counter.all);
+      })
+  }
+});
+
+Template.editProfile.helpers({
+  userDescCounter: function() {
+    return count.get();
+  }
+});
+
 
 Template.editProfile.events({
     // Submit signup form event
@@ -89,3 +108,9 @@ AutoForm.addHooks(['userDescUpdate'], {
    //Router.go("/"+Meteor.user().username);
   }
 });
+
+Template.editProfile.events({
+  
+  
+});
+

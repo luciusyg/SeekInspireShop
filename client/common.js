@@ -23,6 +23,7 @@ Meteor.startup(function () {
     passwordSignupFields: 'USERNAME_AND_EMAIL'
   });
 
+
 });
 
 

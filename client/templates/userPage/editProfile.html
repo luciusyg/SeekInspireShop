@@ -10,14 +10,15 @@
 	</form> 
 
 	<br>
-	  {{#unless this.isUploaded}}
+	  <!-- {{#unless this.isUploaded}}
 	  {{> FS.UploadProgressBar bootstrap=true}}
-	  {{/unless}}
+	  {{/unless}} -->
 
 	<h3>Edit Your Desc</h3>
 
-	{{#autoForm collection="UserData" id="userDescUpdate" type="update" doc=this}}
-	{{> afQuickField name= "userDesc" rows=6}}
+	{{#autoForm collection="UserData" type="update" id="userDescAutoForm" doc=this}}
+	{{> afQuickField name= "userDesc" rows=6 id="userDescUpdate"}}
+	word count {{userDescCounter}}
 	<button type="submit" class="btn btn-primary">Update</button>
 	{{/autoForm}}
 

@@ -31,3 +31,5 @@ mrt:flash-messages
 jonblum:jquery-cropper
 lepozepo:cloudinary
 reactive-var
+mrt:external-file-loader
+manuelschoebel:wait-on-lib
