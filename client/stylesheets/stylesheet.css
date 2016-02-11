@@ -1,8 +1,13 @@
 /*	border:1px solid green;*/
-.modal-body {
+.modalCrop-body {
 	height:300px;
 }
 
+.modalSubmit-body {
+	height:150px;
+	background-color: #F4F3F3;
+
+}
 .profile-container {
 	padding-left: 30px;
 	padding-right: 30px;
@@ -33,6 +38,8 @@
 	height: 400px;
 }
 
+/*Form CSS, Item Box CSS*/
+
 .item-box {
 	padding-bottom: 20px;
 	max-width: 400px; 
@@ -50,6 +57,8 @@
 .item-maxwidth {
 	max-width: 100%;
     height: auto;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .item-status {
@@ -85,6 +94,24 @@
 	padding-top: 20px;
 }
 
+.submit-uploadImage {
+	background-color: #F4F3F3;
+	border-style: solid;
+	border-top: 0px;
+	border-bottom: 0px;
+	border-left: 0px;
+	border-right: 2px dotted #979797;
+	width: 50%;
+	text-align: center;
+
+}
+
+.submit-addWebImage {
+	background-color: #F4F3F3;
+	width: 50%;
+	text-align: center;
+}
+
 .title-field {
 	border-style:solid;
 	border-right: 0;
@@ -98,13 +125,50 @@
 .title-field:focus {
   outline: 0;
   -webkit-box-shadow: none;
+  border-bottom-color: #000000;
   box-shadow: none;
 }
 
 .form-grey{
 	background-color: #D8D8D8;
+	border-style:solid;
+	border-right: 0;
+	border-left: 0;
+	border-top: 0;
+	border-bottom: 0;
+	box-shadow: none;
 }
 
+.form-grey:focus {
+  outline: 0;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+.cleanForm{
+	border-style:solid;
+	box-shadow: none;
+}
+
+.cleanForm:focus{
+  outline: 0;
+  -webkit-box-shadow: none;
+  border-style:solid;
+  border-color: #cccccc;
+  box-shadow: none;
+}
+
+.form-top-bottom{
+	margin-bottom: 10px;
+	margin-top: 10px;
+}
+
+.form-50{
+	width: 50%;
+}
+.form-45{
+	width: 45%;
+}
 .coupon-box {
 	padding-top: 20px;
 	padding-bottom: 20px;
@@ -120,6 +184,22 @@
 	padding-top: 20px;
 	vertical-align: text-top;
 }
+
+.glyphiconRight-input {
+    border-right: 0;
+}
+
+.glyphiconClear-icon {
+    border-left:0 solid transparent;
+    background:transparent;
+}
+
+.glyphiconGrey-icon {
+    border-left:0 solid transparent;
+    background-color: #D8D8D8;
+}
+
+/*CSS Misc Items*/
 
 .greyLine {
      background: #ccc; 
@@ -173,5 +253,17 @@ textarea {
 	color:#007DFF;
 }
 
+.glyphicon-75 {
+	font-size: 75px;
+}
 
+.glyphiconLink {
+	color: #616161;
+}
 
+.glyphiconLink:hover {
+	color: #616161;
+	cursor: hand;
+    cursor: pointer;
+    opacity: .5;
+}

@@ -1,5 +1,8 @@
 Meteor.subscribe("allUsers");
 Meteor.subscribe("UserData");
+Meteor.subscribe("itemData");
+
+Forms.mixin(Template.submitPage); 
 
 $.cloudinary.config({
   cloud_name: "lyg"

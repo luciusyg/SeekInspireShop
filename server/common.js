@@ -6,6 +6,10 @@ Meteor.publish("UserData", function() {
     return UserData.find();
 });
 
+Meteor.publish("itemData", function() {
+    return itemData.find();
+});
+
 Accounts.validateNewUser(function (user){
 	UserData.insert({
 						userId: user._id,

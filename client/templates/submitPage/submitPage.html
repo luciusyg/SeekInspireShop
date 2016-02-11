@@ -1,44 +1,69 @@
 <template name="submitPage">
 
-<div class="items-container">
-	<div class="col-md-4">
-		<div class="submit-item-box">
-			 <div class="submit-image-box">
-				  <img class="item-maxwidth"  src="http://41.media.tumblr.com/5f00b946b82bc1701f97988f5b59865d/tumblr_nf6malZ0y61shao85o1_540.jpg">
-			  </div>
-				<form>
-				  	<div class="form-group has-feedback">
-						  <input type="text" class="form-control title-field" id="titleField" placeholder="Type Title Here">
-						  <span class="glyphicon glyphicon-pencil form-control-feedback"></span>
-				  	</div>
-					<div class = "form-group">
-				     	 <textarea class = "form-control form-grey" rows = "5" placeholder="Describe your item"></textarea>
-				  	</div>
-			  	</form>
-			  	<form class="form-inline">
-				  	<div class="form-group has-feedback">
-						  <span class="glyphicon glyphicon-link form-control-feedback"></span>
-						  <input type="text" class="form-control form-grey" id="linkField" placeholder="Item URL">
-				  	</div>
-				  	<div class="form-group has-feedback pull-right">
-						  <span class="glyphicon glyphicon-usd form-control-feedback"></span>
-						  <input type="text" class="form-control form-grey" id="priceField" placeholder="Price">
-				  	</div>
-				</form>
-		 		<div class="submit-coupon-box">
-		 			<div class="form-group">
-					  	<div class="input-group">
-						    <div class="input-group-addon ">
-						      <span class="glyphicon glyphicon-tags"></span>
-						    </div>
-					    	<input class="form-control" id="email" name="email" type="text" placeholder="Enter Coupon Code">
-					  	</div>
-					</div>
-		 		</div>
-		 	<button type="button" class="btn btn-success btn-block">Next</button>
-		 </div>
-	</div>
+<!-- Modal -->
+<div class="modal fade" id="imageSubmitModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+    	<div class="modal-header">
+		</div>
+     	<div class="modal-body modalSubmit-body">
+	        <div class="submit-uploadImage pull-left">
+		        <a class="glyphiconLink" href="google.com" style="text-decoration:none">
+		        	<span class= "glyphicon glyphicon-camera glyphicon-75"></span><br>
+		        	Upload Photo
+	        	</a>
+	        </div>
+	        <div class="submit-addWebImage pull-right">
+		    	<a class="glyphiconLink" href="yahoo.com" style="text-decoration:none">
+		        	<span class="glyphicon glyphicon-globe glyphicon-75"></span><br>Add Photo From Web
+		        </a>
+	        </div>
+     	</div>
+	    <div class="modal-footer">
+	        <center>
+	        	<a href = "{{usernameHelper}}" class = "btn btn-default" role = "button">Cancel</a>
+	        </center>
+	    </div>
+    </div>
+  </div>
 </div>
 
 
+
+
+<div class="items-container">
+	<div class="col-md-4 col-md-offset-4">
+		<div class="submit-item-box">
+			 <div class="submit-image-box">
+			 	 <center>
+				  <img class="item-maxwidth"  src="http://41.media.tumblr.com/5f00b946b82bc1701f97988f5b59865d/tumblr_nf6malZ0y61shao85o1_540.jpg">
+			  	 </center>
+			  </div>
+				{{#autoForm id="itemSubmitForm" type="insert" collection="itemData" }}
+
+					<div class="input-group">
+						{{> afFieldInput name='itemHeadline' class="title-field glyphiconRight-input" placeholder="Type Title Here"}}
+						<span class="input-group-addon title-field glyphiconClear-icon"><span class= "glyphicon glyphicon-pencil"></span></span>
+					</div>
+						{{> afFieldInput name='itemBodyText' class="form-grey form-top-bottom" placeholder="Describe your item"}}
+
+					<div class="input-group form-50 pull-left">
+						{{> afFieldInput name='itemURL' class="form-grey glyphiconRight-input" placeholder="Item URL"}}
+						<span class="input-group-addon glyphiconGrey-icon"><span class= "glyphicon glyphicon-link"></span></span>
+					</div>
+					<div class="input-group form-45 pull-right">
+						{{> afFieldInput name='itemPrice' class="form-grey glyphiconRight-input" placeholder="0.00"}}
+						<span class="input-group-addon glyphiconGrey-icon"><span class= "glyphicon glyphicon-usd"></span></span>
+					</div>
+					<div class="clearfix"></div>
+					<div class="input-group form-top-bottom">
+						<span class="input-group-addon"><span class= "glyphicon glyphicon-tags"></span></span>
+						{{> afFieldInput name='itemCouponCode' placeholder="Enter Coupon Code" class="cleanForm"}}
+					</div>
+					{{> afQuickField name="itemLoves"}}
+					<button type="submit" class="btn btn-success btn-block">Next</button>
+				{{/autoForm}}
+		 </div>
+	</div>
+</div>
 </template>
